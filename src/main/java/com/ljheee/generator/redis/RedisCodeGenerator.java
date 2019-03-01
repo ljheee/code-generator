@@ -20,8 +20,6 @@ public class RedisCodeGenerator implements CodeGenerator {
     private String generateByDate(String prefix, Date date, String pattern) {
 
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-
-
         String key = prefix + sdf.format(date);
         long num = RedisUtil.getIncr(key, -1);
         return key + NumberUtil.padLeft(num, prefix.length());
